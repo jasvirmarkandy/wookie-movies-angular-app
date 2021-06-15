@@ -1,0 +1,36 @@
+<div class="parallax-left-content" *ngIf="movieDetail">
+  <section class="parallax-position">
+    <div class="parallax-img-container">
+      <img src="{{ movieDetail.poster }}" />
+    </div>
+    <div class="parallax-right-content">
+      <div class="outerDiv">
+        <div class="leftDiv">{{ movieDetail.title }}</div>
+        <div class="rightDiv">
+          <app-wookie-movie-rating
+            rating="{{ movieDetail.imdb_rating }}"
+          ></app-wookie-movie-rating>
+        </div>
+      </div>
+      <p style="font-size: 20px; font-weight: bold;">
+        {{ movieDetail.released_on | date: "yyyy" }} |
+        {{ movieDetail.length }} |
+        {{ movieDetail.director }}
+      </p>
+      CAST:
+      <span
+        style="
+          font-size: 18px;
+          padding-right: 8px;
+          font-style: italic;
+          color: darkslategrey;
+        "
+        *ngFor="let cast of movieDetail.cast"
+        >{{ cast }} |
+      </span>
+      <p style="font-size: 18px; padding-right: 8px;">
+        Movie Descrption: {{ movieDetail.overview }}
+      </p>
+    </div>
+  </section>
+</div>
